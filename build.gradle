@@ -4,7 +4,8 @@
 plugins {
     id 'java'
     id 'com.google.protobuf' version '0.8.10'
-    id 'idea'
+//    id 'eclipse'
+//    id 'idea'
 }
 
 group 'com.github.simplesteph.grpc'
@@ -45,10 +46,21 @@ dependencies {
 }
 
 // if you have source imports issues, add the below
+/*
 sourceSets.main.java.srcDir new File(buildDir, 'generated/source')
 idea {
     module {
         // Marks the already(!) added srcDir as "generated"
         generatedSourceDirs += file('build/generated/source')
+    }
+}
+*/
+
+sourceSets {
+    main {
+        java {
+            srcDirs 'build/generated/source/proto/main/grpc'
+            srcDirs 'build/generated/source/proto/main/java'
+        }
     }
 }
